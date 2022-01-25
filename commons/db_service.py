@@ -78,7 +78,7 @@ class SQLAlchemyMySQLConnection(BaseDBConnection):
             f'mysql+pymysql://{user}:{password}@{host}/{dbname}'
         )
         
-    def get_cursor(self):
+    def establish(self):
         return self.engine
         
     def close(self):
