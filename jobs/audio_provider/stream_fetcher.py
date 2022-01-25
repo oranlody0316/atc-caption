@@ -9,7 +9,7 @@ import pandas as pd
 from lxml import etree
 import urllib.request as urlrequest
 from model.stream_info import StreamInfo
-from commons.services import (
+from commons.db_service import (
     SQLAlchemyMySQLConnection, 
     LiquiBaseMySQLConnection, 
     BaseDBConnection
@@ -72,8 +72,8 @@ def main(
         if export_path is not None:
             stream_final_df.to_csv(export_path, index=False)
         if liquibase_conn is not None and sqla_conn is not None:
-            liquibase_cursor = liquibase_conn.get_cursor()
-            sqla_cursor = sqla_conn.get_cursor()
+            liquibase_cursor = liquibase_conn.establish()
+            sqla_cursor = sqla_conn.establish()
             # update schema
             # upload data
             pass
