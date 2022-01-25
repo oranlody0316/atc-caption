@@ -1,0 +1,2 @@
+class LiquiBaseConnection:
+    pass

@@ -1,0 +1,9 @@
+{
+    "US-Class-B": "https://www.liveatc.net/feedindex.php?type=class-b",
+    "US-Class-C": "https://www.liveatc.net/feedindex.php?type=class-c",
+    "US-Class-D": "https://www.liveatc.net/feedindex.php?type=class-d",
+    "US-ARTCC": "https://www.liveatc.net/feedindex.php?type=us-artcc",
+    "International-EU": "https://www.liveatc.net/feedindex.php?type=international-eu",
+    "CA": "https://www.liveatc.net/feedindex.php?type=canada",
+    "International-AS": "https://www.liveatc.net/feedindex.php?type=international-as"
+}
