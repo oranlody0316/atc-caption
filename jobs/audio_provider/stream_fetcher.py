@@ -9,6 +9,7 @@ import pandas as pd
 from lxml import etree
 import urllib.request as urlrequest
 from model.stream_info import StreamInfo
+from commons.services import SQLAlchemyConnection, LiquiBaseConnection
 
 logger = logging.getLogger("stream_finder")
 logging.basicConfig(
@@ -39,8 +40,9 @@ def acquire_stream_info_df(
         return stream_info_df
 
 def main(
-            crawl_urls_path: str = "commons/crawl_urls.json",
-            stream_info_export_path: str = None,
+            crawl_urls_path: str = "commons/crawl_urls.json", 
+            liquibase_conn: LiquiBaseConnection = None,
+            sqla_conn: SQLAlchemyConnection = None,
     ):
         stream_df_collection = []
         logger.info(f"Start Fetching Stream Information")
@@ -52,6 +54,10 @@ def main(
         )
         stream_final_df = pd.concat([meta_df for meta_df in stream_df_collection], axis=0)
         logger.info(f"<Total> Fetched {stream_final_df.shape[0]} Available Stream Links")
+        liquibase_cursor = liquibase_conn.get_cursor()
+        sqla_cursor = sqla_conn.get_cursor()
+        # update schema
+        # upload data
 
 if __name__ == "__main__":
 
