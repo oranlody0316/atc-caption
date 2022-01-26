@@ -17,7 +17,7 @@ from commons.db_service import (
 
 logger = logging.getLogger("stream_finder")
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format="%(asctime)s [%(levelname)s] [%(process)d] %(message)s",
 )
 
@@ -82,5 +82,5 @@ if __name__ == "__main__":
 
     main(
         crawl_urls_path="commons/crawl_urls.json",
-        export_path="exp/stream_info.csv"
+        export_path="../liveatc/stream_info.csv"
     )
