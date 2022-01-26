@@ -11,12 +11,14 @@ authors=[
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.8.12"
+python = ">=3.7,<3.11"
 ffmpeg-python = ">=0.2"
 lxml = ">=4.7.1"
 pandas = ">=1.0.3"
 numpy = ">=1.18.2"
 pydub = ">=0.25.0"
 pyliquibase = ">=2.0.0"
-pydantic = ">= 1.9.0"
-sqlalchemy = ">= 1.0.0"
+pydantic = ">=1.9.0"
+sqlalchemy = ">=1.0.0"
+sounddevice = ">=0.4.4"
+scipy = ">=1.7.0"

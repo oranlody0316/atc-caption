@@ -9,24 +9,30 @@ class StreamInfo(BaseModel):
     category: str
     metar: Optional[str]
     place: str
+    ts: str
     
     @classmethod
-    def from_element(cls, element: Element, category: str):
-        href = element.xpath("//a[contains(@href, '/play/')]")[0].attrib["href"]
+    def from_element(cls, link: str, element: Element, category: str, ts: str):
         text_ls = list(element.itertext())
-        flag = cls.get_flag(href)
+        flag = cls.get_flag(link)
         stream_link = cls.flag_to_stream_link(flag)
         abstract = text_ls[0]
         place = text_ls[2]
-        metar = text_ls[11]
-        return cls(
+        try:
+            metar = text_ls[11]
+            assert metar.isupper() is True
+        except AssertionError as e:
+            metar = "N/A"
+        obj = cls(
             flag=flag,
             stream_link=stream_link,
             abstract=abstract,
             category=category,
             metar=metar,
-            place=place
+            place=place,
+            ts=ts
         )
+        return obj
     
     @staticmethod 
     def get_flag(pls_link):
